@@ -17,14 +17,18 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.10"
 
       - name: Install Dependencies
         run: |
+          sudo apt-get update
+          # Install python3-tk so tkinter-based code works on Ubuntu
+          sudo apt-get install -y python3-tk
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          # If you have dependencies, uncomment after adding them to requirements.txt
+          # pip install -r requirements.txt
 
       - name: Run Tests
         run: |
-          # Replace with your test command (e.g., pytest)
-          pytest
+          # If you have tests, replace this echo command with your test command (e.g. pytest)
+          echo "No tests to run."
