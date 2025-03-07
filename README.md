@@ -40,7 +40,7 @@ It features a modern UI with a custom rounded button and error handling for inva
 ## Example CSV Format
 
 ```csv
-Country,Mann,Frau
+Country,Male,Female
 Germany,79.0,83.5
 Austria,79.3,84.2
 USA,76.3,81.4
