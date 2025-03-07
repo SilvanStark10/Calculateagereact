@@ -19,8 +19,8 @@ def load_life_expectancy_data(filepath):
                 country = row['Country']
                 try:
                     data[country] = {
-                        'Male': float(row['Mann']),
-                        'Female': float(row['Frau'])
+                        'Male': float(row['Male']),
+                        'Female': float(row['Female'])
                     }
                 except ValueError:
                     print(f"Error: Invalid data for {country} in CSV file.")
