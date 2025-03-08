@@ -1,4 +1,10 @@
 # Life Expectancy Calculator
+## Screenshots
+
+![Screenshot 1](images/Screenshot_1.png)
+
+![Screenshot 2](images/Screenshot_2.png)
+
 
 A simple GUI application that calculates the remaining time a user has left to live based on the average life expectancy for a selected country.  
 The program uses Python’s Tkinter library for a **nice user interface** and reads a CSV file for country‐specific life expectancy data.
