@@ -1,9 +1,9 @@
 # Life Expectancy Calculator
 ## Screenshots
 
-![Screenshot 1](images/Screenshot_1.png)
+![Screenshot 1](docs/images/Screenshot_1.png)
 
-![Screenshot 2](images/Screenshot_2.png)
+![Screenshot 2](docs/images/Screenshot_2.png)
 
 
 A simple GUI application that calculates the remaining time a user has left to live based on the average life expectancy for a selected country.  
