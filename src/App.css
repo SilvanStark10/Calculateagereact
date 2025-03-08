@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.calculator-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.result-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.age-display {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.age-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.age-number {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+}
+
+.age-label {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+}
+
+footer {
+  padding: 20px;
+  background-color: #f0f0f0;
+  margin-top: 30px;
+} 
