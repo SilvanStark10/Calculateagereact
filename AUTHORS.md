@@ -2,7 +2,7 @@
 
 ## Primary Authors and Maintainers
 
-* **Silvan Stark** - *Initial work and ongoing maintenance* - [Your GitHub](https://github.com/yourusername)
+* **Silvan Stark** - *Initial work and ongoing maintenance* - [SilvanStark10](https://github.com/SilvanStark10)
 
 ## Legal Authors
 
