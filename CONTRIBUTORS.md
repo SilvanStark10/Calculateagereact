@@ -4,7 +4,7 @@
 
 This project exists thanks to all the people who contribute:
 
-* **Silvan Stark** - *Initial work* - [Your GitHub](https://github.com/yourusername)
+* **Silvan Stark** - *Initial work* - [SilvanStark10](https://github.com/SilvanStark10)
 
 ## How to Contribute
 

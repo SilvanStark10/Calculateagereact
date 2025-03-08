@@ -1,5 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import tkinter as tk
 
 a = Analysis(
     ['src\\calculate_age.py'],
