@@ -1,9 +1,9 @@
 ('D:\\Visual Studio\\Calculate age\\dist\\calculate_age.exe',
- True,
+ False,
  False,
  False,
  'd:\\Visual Studio\\Calculate '
- 'age\\.venv\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ 'age\\.venv\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-windowed.ico',
  None,
  False,
  False,
@@ -3066,9 +3066,9 @@
  [],
  False,
  False,
- 1741424615,
- [('run.exe',
+ 1741425084,
+ [('runw.exe',
    'd:\\Visual Studio\\Calculate '
-   'age\\.venv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'age\\.venv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],
  'C:\\Program Files\\Python313\\python313.dll')
