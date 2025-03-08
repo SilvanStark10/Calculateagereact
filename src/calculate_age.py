@@ -3,10 +3,26 @@ from tkinter import ttk
 import datetime
 import csv
 import os
+import sys  # <-- NEW: Needed to detect if running as a PyInstaller bundle
 
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
+# Helper function to get the correct path to resources (like CSV files)
+# -------------------------------------------------------------------------
+def resource_path(relative_path):
+    """
+    Returns the absolute path to the resource, works for dev and for PyInstaller.
+    """
+    if getattr(sys, 'frozen', False):
+        # If this is a PyInstaller bundle, the files are unpacked to sys._MEIPASS
+        base_path = sys._MEIPASS
+    else:
+        # Otherwise, use the directory of this script
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, relative_path)
+
+# -------------------------------------------------------------------------
 # Function to load life expectancy data from a CSV file
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 def load_life_expectancy_data(filepath):
     data = {}
     if not os.path.exists(filepath):
@@ -28,9 +44,9 @@ def load_life_expectancy_data(filepath):
         print(f"Error loading CSV file: {e}")
     return data
 
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 # Custom rounded button class for a modern UI look
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 class RoundedButton(tk.Canvas):
     def __init__(self, parent, width, height, radius, bg, fg, text, command=None):
         super().__init__(parent, width=width, height=height, bg=parent["bg"],
@@ -70,9 +86,9 @@ class RoundedButton(tk.Canvas):
         if self.command:
             self.command()
 
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 # Function to calculate remaining life based on birth date, gender, and country
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 def calculate_life_left():
     try:
         year = int(year_var.get())
@@ -129,9 +145,9 @@ def calculate_life_left():
     
     result_label.config(text=result_text)
 
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 # Main application window setup
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 root = tk.Tk()
 root.title("Life Expectancy Calculator")
 root.configure(bg="white")
@@ -200,8 +216,10 @@ country_var = tk.StringVar()
 country_menu = ttk.Combobox(frame, textvariable=country_var, state="readonly", font=("Helvetica", 14))
 country_menu.grid(row=4, column=1, padx=10, pady=10)
 
-# Load life expectancy data and populate country dropdown
-life_expectancy_data = load_life_expectancy_data("life_expectancy_data.csv")
+# Use resource_path() to get the correct CSV path
+csv_file = resource_path("data/life_expectancy_data.csv")
+life_expectancy_data = load_life_expectancy_data(csv_file)
+
 if life_expectancy_data:
     country_options = sorted(life_expectancy_data.keys())
     country_menu['values'] = country_options
