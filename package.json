@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && powershell -Command \"if (!(Test-Path -Path 'build/data')) { New-Item -ItemType Directory -Path 'build/data' }; Copy-Item -Path 'public/data/life_expectancy_data.csv' -Destination 'build/data/'\"",
+    "build": "react-scripts build && node scripts/copyData.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
