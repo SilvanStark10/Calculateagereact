@@ -1,3 +1,7 @@
 # List your Python dependencies here.
 # Example:
 # tkinter
+
+# Python dependencies for Calculate Age application
+tkinter
+# No additional dependencies required for testing as we're using unittest from the standard library

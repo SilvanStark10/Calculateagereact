@@ -1,0 +1,69 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build Executable
+        run: |
+          pyinstaller --onefile --windowed --icon=data/icon.ico --add-data "data;data" src/calculate_age.py
+
+      - name: Rename Executable
+        run: |
+          mv dist/calculate_age.exe dist/Calculateage.exe
+          copy dist/Calculateage.exe dist/Calculateage-${{ github.ref_name }}.exe
+
+      - name: Create Archive
+        run: |
+          Compress-Archive -Path src/, data/, requirements.txt, LICENSE.txt, README.md -DestinationPath Calculateage-${{ github.ref_name }}.zip
+
+      - name: Generate SHA256 Checksums
+        run: |
+          Get-FileHash -Algorithm SHA256 dist/Calculateage.exe, dist/Calculateage-${{ github.ref_name }}.exe, Calculateage-${{ github.ref_name }}.zip | ForEach-Object { "$($_.Hash)  $($_.Path.Split('\')[-1])" } | Out-File -FilePath SHA2-256SUMS -Encoding utf8
+
+      - name: Generate SHA512 Checksums
+        run: |
+          Get-FileHash -Algorithm SHA512 dist/Calculateage.exe, dist/Calculateage-${{ github.ref_name }}.exe, Calculateage-${{ github.ref_name }}.zip | ForEach-Object { "$($_.Hash)  $($_.Path.Split('\')[-1])" } | Out-File -FilePath SHA2-512SUMS -Encoding utf8
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Calculateage ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          body: |
+            ## Life Expectancy Calculator ${{ github.ref_name }}
+            
+            Standalone executable with embedded data file. No terminal window appears when running.
+            
+            ### Changes in this version:
+            - Initial release
+            
+            Full Changelog: [View Changes](https://github.com/SilvanStark10/Calculateage/commits/${{ github.ref_name }})
+          files: |
+            dist/Calculateage.exe
+            dist/Calculateage-${{ github.ref_name }}.exe
+            Calculateage-${{ github.ref_name }}.zip
+            SHA2-256SUMS
+            SHA2-512SUMS 

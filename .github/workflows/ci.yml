@@ -25,10 +25,8 @@ jobs:
           # Install python3-tk so tkinter-based code works on Ubuntu
           sudo apt-get install -y python3-tk
           python -m pip install --upgrade pip
-          # If you have dependencies, uncomment after adding them to requirements.txt
-          # pip install -r requirements.txt
+          pip install -r requirements.txt
 
       - name: Run Tests
         run: |
-          # If you have tests, replace this echo command with your test command (e.g. pytest)
-          echo "No tests to run."
+          python tests/run_tests.py
