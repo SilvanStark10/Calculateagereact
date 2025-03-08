@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies 📦
         run: npm ci || npm install
 
+      - name: Install TypeScript 4.9.5 explicitly 🔧
+        run: npm install typescript@4.9.5 --save-dev
+
       - name: Build 🏗️
         run: npm run build
         env:
